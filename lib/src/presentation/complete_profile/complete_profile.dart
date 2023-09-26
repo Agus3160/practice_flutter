@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project/CustomWidgets/CustomElevatedButton.dart';
-import 'package:project/utils/utils.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomElevatedButton.dart';
+import 'package:project/src/utils/utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:project/CustomWidgets/CustomPreloader.dart';
-import 'package:project/CustomWidgets/CustomSnackBarMessages.dart';
-import 'package:project/CustomWidgets/CustomTextFormField.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomPreloader.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomSnackBarMessages.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomTextFormField.dart';
 
 class CompleteProfile extends StatefulWidget {
   const CompleteProfile({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project/CustomWidgets/CustomImageIcon.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomImageIcon.dart';
 import '../CustomWidgets/CustomTextFormField.dart';
 import '../CustomWidgets/CustomElevatedButton.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:project/utils/utils.dart';
-import 'package:project/CustomWidgets/CustomPreloader.dart';
-import 'package:project/CustomWidgets/CustomSnackBarMessages.dart';
+import 'package:project/src/utils/utils.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomPreloader.dart';
+import 'package:project/src/presentation/CustomWidgets/CustomSnackBarMessages.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

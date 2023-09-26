@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project/login/login_page.dart';
-import 'package:project/register/register_page.dart';
+import 'package:project/src/presentation/login/login_page.dart';
+import 'package:project/src/presentation/register/register_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:project/utils/utils.dart';
-import 'package:project/splash/splash_page.dart';
-import 'package:project/root/root_page.dart';
-import 'package:project/complete_profile/complete_profile.dart';
+import 'package:project/src/utils/utils.dart';
+import 'package:project/src/presentation/splash/splash_page.dart';
+import 'package:project/src/presentation/root/root_page.dart';
+import 'package:project/src/presentation/complete_profile/complete_profile.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");

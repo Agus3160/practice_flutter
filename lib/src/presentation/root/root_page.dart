@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:project/conversation/conversation_page.dart';
-import 'package:project/menu/menu_page.dart';
-import 'package:project/utils/utils.dart';
+import 'package:project/src/presentation/conversations/conversations_page.dart';
+import 'package:project/src/presentation/menu/menu_page.dart';
+import 'package:project/src/utils/utils.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
