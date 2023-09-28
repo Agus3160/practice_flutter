@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/src/presentation/change_user_name/change_user_name_page.dart';
+import 'package:project/src/presentation/conversation/conversation_page.dart';
 import 'package:project/src/presentation/login/login_page.dart';
 import 'package:project/src/presentation/register/register_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginScreen(),
           '/register': (context) => const RegisterScreen(),
           '/completeProfile': (context) => const CompleteProfile(),
+          '/editProfile': (context) => const ChangeUserNamePage(),
+          '/conversation': (context) => const ConversationPage()
         });
   }
 }

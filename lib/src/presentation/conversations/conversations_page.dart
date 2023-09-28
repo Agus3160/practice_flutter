@@ -38,7 +38,7 @@ class _ConversationsPageState extends State<ConversationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Conversaciones'),
+        title: const Text('Chats'),
         actions: [
           CupertinoButton(
             onPressed: addConversation,
@@ -47,7 +47,7 @@ class _ConversationsPageState extends State<ConversationsPage> {
         ],
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.all(0),
         child: StreamBuilder<List<Conversation>>(
           stream: _stream,
           builder: (context, snapshot) {
@@ -62,7 +62,7 @@ class _ConversationsPageState extends State<ConversationsPage> {
               );
             }
             if (!snapshot.hasData) {
-              return const Center(child: Text('No hay conversaciones aún'));
+              return const Center(child: Text('There is no chats'));
             }
             final list = snapshot.data!.toList();
             return ListView.separated(
@@ -73,7 +73,7 @@ class _ConversationsPageState extends State<ConversationsPage> {
                   onTap: () => onTap(item),
                 );
               },
-              separatorBuilder: (ctx, idx) => const SizedBox(height: 8),
+              separatorBuilder: (ctx, idx) => const SizedBox(height: 0),
               itemCount: list.length,
             );
           },

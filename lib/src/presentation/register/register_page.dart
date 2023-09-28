@@ -27,57 +27,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         title: const Text('Sign Up'),
       ),
-      body: Container(
-          alignment: Alignment.center,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const CustomImageIcon(width: 128, imgUrl: 'assets/img/chat.webp'),
-              Form(
-                key: formKey,
-                child: Column(children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 25, bottom: 25),
-                    child: CustomTextFormField(
-                        label: 'Email',
-                        placeHolder: 'Enter your email',
-                        keyboardType: TextInputType.emailAddress,
-                        prefixIcon: const Icon(Icons.email),
-                        enableValidation: true,
-                        validator: (email) =>
-                            CustomTextFormField.validatorEmail(email),
-                        controller: emailController),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 50),
-                    child: CustomTextFormField(
-                        placeHolder: 'Enter your password',
-                        prefixIcon: const Icon(Icons.lock),
-                        obscureText: passToggle,
-                        enableValidation: true,
-                        validator: (pswd) =>
-                            CustomTextFormField.validatorPassword(pswd),
-                        suffix: InkWell(
-                          onTap: changeToggle,
-                          child: Icon(passToggle
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                        ),
-                        controller: passwordController),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 50),
-                    child: CustomElevatedButton(
-                      mainText: 'Sign Up',
-                      onCustomPressed: onSignUp,
-                      widthPorcentage: 0.5,
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+            alignment: Alignment.center,
+            height: MediaQuery.of(context).size.height * 0.9,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const CustomImageIcon(
+                    width: 128, imgUrl: 'assets/img/user.png'),
+                Form(
+                  key: formKey,
+                  child: Column(children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 25, bottom: 25),
+                      child: CustomTextFormField(
+                          label: 'Email',
+                          placeHolder: 'Enter your email',
+                          keyboardType: TextInputType.emailAddress,
+                          prefixIcon: const Icon(Icons.email),
+                          enableValidation: true,
+                          validator: (email) =>
+                              CustomTextFormField.validatorEmail(email),
+                          controller: emailController),
                     ),
-                  ),
-                ]),
-              ),
-            ],
-          )),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 50),
+                      child: CustomTextFormField(
+                          label: 'Password',
+                          placeHolder: 'Enter your password',
+                          prefixIcon: const Icon(Icons.lock),
+                          obscureText: passToggle,
+                          enableValidation: true,
+                          validator: (pswd) =>
+                              CustomTextFormField.validatorPassword(pswd),
+                          suffix: InkWell(
+                            onTap: changeToggle,
+                            child: Icon(passToggle
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                          ),
+                          controller: passwordController),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 50),
+                      child: CustomElevatedButton(
+                        mainText: 'Sign Up',
+                        onCustomPressed: onSignUp,
+                        widthPorcentage: 0.5,
+                      ),
+                    ),
+                  ]),
+                ),
+              ],
+            )),
+      ),
     );
   }
 
@@ -88,16 +93,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void onSignUp() async {
+    final String email = emailController.text.trim();
+    final String password = passwordController.text.trim();
     final preloader = CustomPreloader(context);
     if (!formKey.currentState!.validate()) return;
     try {
       preloader.showPreloader();
-      final r = await supa.auth.signUp(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-      log.d(r.session);
-      log.d(r.user);
+      await supa.auth.signUp(email: email, password: password);
     } on Exception catch (e) {
       await preloader.hidePreloader();
       if (!mounted) return;

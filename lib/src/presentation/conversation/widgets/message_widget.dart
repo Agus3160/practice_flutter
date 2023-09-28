@@ -52,7 +52,7 @@ class _MessageWidgetState extends State<MessageWidget> {
           );
         }
         if (!snapshot.hasData) {
-          return const Center(child: Text('Hubo un error'));
+          return const Center(child: Text('Something went wrong'));
         }
         return Align(
           alignment:

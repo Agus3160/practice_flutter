@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  static String? validatorEmail(value) {
+  static isFieldEmpty(value, res) {
     if (value!.isEmpty) {
-      return 'Enter an email';
+      return res;
     }
+  }
+
+  static String? validatorEmail(value) {
+    isFieldEmpty(value, 'Enter the email');
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value)) {
@@ -14,9 +18,7 @@ class CustomTextFormField extends StatelessWidget {
   }
 
   static String? validatorPassword(value) {
-    if (value!.isEmpty) {
-      return 'Enter a password';
-    }
+    isFieldEmpty(value, 'Enter the password');
     if (value!.length < 6) {
       return 'Min of chars is 6';
     }

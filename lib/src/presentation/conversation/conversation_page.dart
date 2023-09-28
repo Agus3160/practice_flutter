@@ -32,7 +32,7 @@ class _ConversationPageState extends State<ConversationPage> {
     }
     return supabase
         .from('profiles')
-        .select()
+        .select('*')
         .eq('id', otherId)
         .single()
         .then((value) => Profile.cache[otherId] = Profile.fromMap(value))
@@ -46,7 +46,7 @@ class _ConversationPageState extends State<ConversationPage> {
     final args = ModalRoute.of(context)?.settings.arguments;
     if (args is! Conversation) {
       CustomSnackBarMessages.errorMessage(
-          context, 'Hubo un error al obtener la conversación');
+          context, 'Something went wrong getting the chat');
       return;
     }
     conversation = args;
@@ -86,7 +86,7 @@ class _ConversationPageState extends State<ConversationPage> {
             }
             if (!snapshot.hasData) {
               return const Center(
-                child: Text('No hay mensajes aún.'),
+                child: Text('There is no message'),
               );
             }
             return Text(snapshot.data!);
@@ -95,7 +95,7 @@ class _ConversationPageState extends State<ConversationPage> {
       ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: Column(
             children: [
               Expanded(
@@ -113,11 +113,11 @@ class _ConversationPageState extends State<ConversationPage> {
                       );
                     }
                     if (!snapshot.hasData) {
-                      return const Center(child: Text('No hay mensajes aún'));
+                      return const Center(child: Text('There is no message'));
                     }
                     final list = snapshot.data!;
                     if (list.isEmpty) {
-                      return const Center(child: Text('No hay mensajes aún'));
+                      return const Center(child: Text('There is no message'));
                     }
                     return ListView.separated(
                       reverse: true,
@@ -141,7 +141,7 @@ class _ConversationPageState extends State<ConversationPage> {
               ),
               ChatTextField(
                 controller: controller,
-                hint: 'ingrese su mensaje',
+                hint: 'Enter your message',
                 onTap: onSend,
                 isLoading: isLoading,
               )

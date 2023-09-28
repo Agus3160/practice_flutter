@@ -36,7 +36,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Añadir usuario'),
+        title: const Text('Add User'),
         actions: [
           CupertinoButton(
             onPressed: onSave,
@@ -56,7 +56,7 @@ class _UsersPageState extends State<UsersPage> {
             );
           }
           if (!snapshot.hasData) {
-            return const Center(child: Text('No hay conversaciones aún'));
+            return const Center(child: Text('There is no conversation'));
           }
           final list = snapshot.data!;
           return ListView.separated(
@@ -103,7 +103,7 @@ class _UsersPageState extends State<UsersPage> {
 
     if (participants.isEmpty) {
       CustomSnackBarMessages.errorMessage(
-          context, 'Debe elegir algun participante');
+          context, 'You have to select a participant');
       return;
     }
 
@@ -144,7 +144,7 @@ class _UsersPageState extends State<UsersPage> {
         // log.d(c);
         if (c.length > 1) {
           if (!mounted) return;
-          CustomSnackBarMessages.errorMessage(context, 'Hubo un problema');
+          CustomSnackBarMessages.errorMessage(context, 'Something went wrong');
           return;
         }
         if (!mounted) return;
@@ -161,7 +161,6 @@ class _UsersPageState extends State<UsersPage> {
     try {
       if (!mounted) return;
       preloader.showPreloader();
-      log.d('need to be created');
       final c = await supabase
           .from('conversations')
           .upsert(conversation.toMap())

@@ -29,59 +29,63 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Container(
-          alignment: Alignment.center,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const CustomImageIcon(width: 128, imgUrl: 'assets/img/chat.webp'),
-              Form(
-                key: formKey,
-                child: Column(children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 25, bottom: 25),
-                    child: CustomTextFormField(
-                        label: 'Email',
-                        placeHolder: 'Enter your email',
-                        keyboardType: TextInputType.emailAddress,
-                        enableValidation: true,
-                        prefixIcon: const Icon(Icons.email),
-                        validator: (email) =>
-                            CustomTextFormField.validatorPassword(email),
-                        controller: emailController),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 50),
-                    child: CustomTextFormField(
-                        placeHolder: 'Enter your password',
-                        enableValidation: true,
-                        label: 'Password',
-                        prefixIcon: const Icon(Icons.lock),
-                        obscureText: passToggle,
-                        suffix: InkWell(
-                          onTap: changeToggle,
-                          child: Icon(passToggle
-                              ? Icons.visibility
-                              : Icons.visibility_off),
+      body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+              alignment: Alignment.center,
+              height: MediaQuery.of(context).size.height * .9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const CustomImageIcon(
+                      width: 128, imgUrl: 'assets/img/chat.png'),
+                  Form(
+                    key: formKey,
+                    child: Column(children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 25, bottom: 25),
+                        child: CustomTextFormField(
+                            label: 'Email',
+                            placeHolder: 'Enter your email',
+                            keyboardType: TextInputType.emailAddress,
+                            enableValidation: true,
+                            prefixIcon: const Icon(Icons.email),
+                            validator: (email) =>
+                                CustomTextFormField.validatorPassword(email),
+                            controller: emailController),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 50),
+                        child: CustomTextFormField(
+                            label: 'Password',
+                            placeHolder: 'Enter your password',
+                            enableValidation: true,
+                            prefixIcon: const Icon(Icons.lock),
+                            obscureText: passToggle,
+                            suffix: InkWell(
+                              onTap: changeToggle,
+                              child: Icon(passToggle
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                            ),
+                            validator: (pswd) =>
+                                CustomTextFormField.validatorPassword(pswd),
+                            controller: passwordController),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 50),
+                        child: CustomElevatedButton(
+                          mainText: 'Login',
+                          onCustomPressed: onLogin,
+                          widthPorcentage: 0.5,
                         ),
-                        validator: (pswd) =>
-                            CustomTextFormField.validatorPassword(pswd),
-                        controller: passwordController),
+                      ),
+                    ]),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 50),
-                    child: CustomElevatedButton(
-                      mainText: 'Login',
-                      onCustomPressed: onLogin,
-                      widthPorcentage: 0.5,
-                    ),
-                  ),
-                ]),
-              ),
-              TextButton(onPressed: onRegister, child: const Text('Register'))
-            ],
-          )),
+                  TextButton(
+                      onPressed: onRegister, child: const Text('Register'))
+                ],
+              ))),
     );
   }
 

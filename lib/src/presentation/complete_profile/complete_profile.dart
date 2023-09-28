@@ -87,11 +87,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
       final data = {
         'first_name': firstNameController.text.trim(),
         'last_name': lastNameController.text.trim(),
+        'id': supabase.auth.currentUser!.id,
       };
-      await supabase.from('profiles').update(data).eq(
-            'id',
-            supabase.auth.currentUser?.id,
-          );
+      await supabase.from('profiles').insert(data);
       await supabase.auth.updateUser(
         UserAttributes(
           data: {'profile_completed': true},

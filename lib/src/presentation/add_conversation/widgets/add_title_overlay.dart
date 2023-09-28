@@ -51,7 +51,7 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
                       ),
                       const Expanded(
                         child: Text(
-                          'Titulo de la conversación',
+                          'Title of the conversation',
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -68,8 +68,8 @@ class _AddTitleOverlayState extends State<AddTitleOverlay> {
                       v!.isEmpty ? 'Fill the field' : null;
                       return null;
                     },
-                    label: 'Nombre de la conversación',
-                    placeHolder: 'ingrese el nombre para su conversación',
+                    label: 'Name of the conversation',
+                    placeHolder: 'Enter the name for the conversation',
                   ),
                   const SizedBox(
                     height: 48,

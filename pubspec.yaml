@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   logger: ^2.0.2
+  flutter_launcher_icons: ^0.13.1
   flutter_dotenv: ^5.1.0
   supabase_flutter: ^1.10.16
   get_it: ^7.6.2
@@ -47,6 +48,9 @@ dev_dependencies:
   flutter_application_id: ^2.0.0-dev
   flutter_lints: ^2.0.0
 
+flutter_icons:
+  image_path: "assets/app_icon.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -63,7 +67,7 @@ flutter:
     - .env
     - assets/img/chat.webp
     - assets/img/user.png
-
+    - assets/img/chat.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -56,10 +56,10 @@ class _ConversationWidgetState extends State<ConversationWidget> {
           );
         }
         if (!snapshot.hasData) {
-          return const Center(child: Text('Hubo un error'));
+          return const Center(child: Text('Something went wrong.'));
         }
         return ListTile(
-          contentPadding: const EdgeInsets.all(0),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
           leading: CircleAvatar(
             child: Text(snapshot.data!.substring(0, 2)),
           ),
