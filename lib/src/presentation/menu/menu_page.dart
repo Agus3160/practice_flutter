@@ -18,7 +18,7 @@ class _MenuPageState extends State<MenuPage> {
   final supabase = getIt.get<SupabaseClient>();
 
   Future<String> getUserName() async {
-    final currentUserId = supabase.auth.currentUser?.id;
+    final currentUserId = supabase.auth.currentUser!.id;
     String userName = "";
     try {
       final response = await supabase
@@ -28,8 +28,7 @@ class _MenuPageState extends State<MenuPage> {
       userName += (response[0]['first_name']) + " ";
       userName += (response[0]['last_name']);
     } catch (e) {
-      // ignore: use_build_context_synchronously
-      CustomSnackBarMessages.errorMessage(context, e.toString());
+      if (mounted) CustomSnackBarMessages.errorMessage(context, e.toString());
     }
     return userName;
   }
@@ -117,7 +116,7 @@ class _MenuPageState extends State<MenuPage> {
       if (!mounted) return;
       await preloader.hidePreloader();
     } on Exception catch (e) {
-      // ignore: use_build_context_synchronously
+      if (!mounted) return;
       CustomSnackBarMessages.errorMessage(context, e.toString());
       return;
     }

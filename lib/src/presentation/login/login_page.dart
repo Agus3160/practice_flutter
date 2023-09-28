@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             enableValidation: true,
                             prefixIcon: const Icon(Icons.email),
                             validator: (email) =>
-                                CustomTextFormField.validatorPassword(email),
+                                CustomTextFormField.validatorEmail(email),
                             controller: emailController),
                       ),
                       Container(

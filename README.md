@@ -1,16 +1,25 @@
-# project
+# App Taller Flutter
 
-A new Flutter project.
+A new Flutter Chat app using [supabase](https://supabase.com/).
 
-## Getting Started
+## What does it do? 
 
-This project is a starting point for a Flutter application.
+It's a flutter app practice where you can register and login to chat with other users that exists in the supabase DB.  
 
-A few resources to get you started if this is your first Flutter project:
+### What were used?
+- SQL sentences
+- Triggers
+- POO
+- ENV VARS
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### Some screenshots
+Some screenshots to see the UI design and some 
+![Screenshot of the login page.](/assets/screen/sc_0.PNG)
+![Screenshot of the register page.](/assets/screen/sc_1.PNG)
+![Screenshot of the menu page.](/assets/screen/sc_4.PNG)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### How to use
+Download/Clone the repo and run the next command in the root of the project.
+```bash
+flutter run
+```
